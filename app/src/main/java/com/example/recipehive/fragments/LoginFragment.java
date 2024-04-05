@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.recipehive.R;
+import com.example.recipehive.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,7 +31,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LoginFragment extends Fragment {
 
     private Dialog registrationDialog;
-    private FirebaseAuth mAuth;
+
+    // Initialize Firebase Auth
+    private FirebaseAuth mAuth = MainActivity.getFirebaseAuth();
 
     public static LoginFragment newInstance() {
         LoginFragment fragment = new LoginFragment();
@@ -50,9 +53,6 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         System.out.println("got to login fragment!");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
 
         //TODO: add try catch
         EditText emailEditText=view.findViewById(R.id.emailEditText);
@@ -80,7 +80,7 @@ public class LoginFragment extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    //FirebaseUser user = mAuth.getCurrentUser();
                                     Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment);
                                     //TODO: add a navigation to main menu fragment
                                 } else {
