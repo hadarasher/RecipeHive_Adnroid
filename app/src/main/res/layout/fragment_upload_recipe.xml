@@ -11,94 +11,106 @@
     <TextView
         android:id="@+id/addRecipeTitleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:textColor="@color/brown"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
         android:text="Add Recipe via Image"
-        android:gravity="center|bottom"/>
+        android:textColor="@color/dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/recipeNameText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.7"
+            android:layout_weight="0.65"
+            android:gravity="right|center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
             android:text="Recipe name: " />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/recipeNameEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:ems="10"
             android:hint="Enter name for the recipe"
             android:inputType="text"
-            android:textColor="@color/brown"
+            android:textColor="@color/dark_brown"
             android:textColorHint="@color/light_honey" />
 
     </LinearLayout>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/uploadFromGalleryBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="upload from gallery"
-        android:background="@drawable/menu_btn_shape"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="upload from gallery" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/pictureWithCameraBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="14dp"
-        android:layout_weight="1"
-        android:text="Picture a Recipe"
-        android:background="@drawable/menu_btn_shape"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="60dp"/>
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="Picture a Recipe" />
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/recipeTypeText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="Recipe Type: " />
+
+        <Spinner
+            android:id="@+id/recipeTypeSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:src="@drawable/drink" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="100dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/recipeTypeText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                android:text="Recipe Type: " />
-
-            <Spinner
-                android:id="@+id/recipeTypeSpinner"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"/>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/drink" />
-
-    </LinearLayout>
+    <android.widget.Button
+        android:id="@+id/saveRecipeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="Save Recipe" />
 
 </LinearLayout>
