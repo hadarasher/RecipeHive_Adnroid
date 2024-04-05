@@ -2,6 +2,7 @@ package com.example.recipehive.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -13,8 +14,14 @@ import android.widget.TextView;
 
 import com.example.recipehive.R;
 import com.example.recipehive.activities.MainActivity;
+import com.google.android.gms.common.util.JsonUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainMenuFragment extends Fragment {
 
     private FirebaseAuth mAuth= MainActivity.getFirebaseAuth();
+    private String username;
 
 
 
@@ -40,6 +48,7 @@ public class MainMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        System.out.println("Login succeed. Moving to Main Menu.");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
@@ -53,9 +62,24 @@ public class MainMenuFragment extends Fragment {
         //get user's name to show
         FirebaseUser user = mAuth.getCurrentUser();
         if(user==null){//TODO: add error handling
-             }
-        String username =user.getDisplayName();
-        helloUserText.setText("Hello, "+username);
+            System.out.println("user does not exists. checkout for the problem.");
+        }else{
+            System.out.println("User authenticated. getting username.");
+        }
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.username));
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                username = snapshot.getValue(String.class);
+                helloUserText.setText("Hello, "+username);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         //Handle every button click to move to the relevant fragment
         uploadBtn.setOnClickListener(new View.OnClickListener() {

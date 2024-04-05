@@ -125,7 +125,7 @@ public class LoginFragment extends Fragment {
                                                 FirebaseUser user = mAuth.getCurrentUser();
                                                 if (user != null) {
                                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                                    DatabaseReference usernameRef = database.getReference("username");
+                                                    DatabaseReference usernameRef = database.getReference(getString(R.string.username));
                                                     usernameRef.setValue(username);
                                                 registrationDialog.dismiss();
                                                 Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment);

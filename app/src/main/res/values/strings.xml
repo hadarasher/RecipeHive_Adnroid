@@ -6,4 +6,5 @@
     <string name="add_recipe">Add Recipe</string>
     <string name="add_ingredients">Add Ingredients</string>
     <string name="save_favorites">Save Favorites</string>
+    <string name="username">username</string>
 </resources>
