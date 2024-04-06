@@ -9,7 +9,7 @@
     android:background="@color/light_yellow">
 
     <TextView
-        android:id="@+id/addRecipeTitleView"
+        android:id="@+id/AddIngreadientTitleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center|bottom"
@@ -25,7 +25,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/recipeNameText"
+            android:id="@+id/recipetNameText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.65"

@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddIngredientFragment">
+    android:orientation="vertical"
+    tools:context=".fragments.UploadRecipeFragment"
+    android:padding="15dp"
+    android:background="@color/light_yellow">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/AddIngreadientTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="Add New Ingredient"
+        android:textColor="@color/dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ingNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="right|center_vertical"
+            android:text="Ingredient name: "
+            android:textColor="@color/dark_brown"
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/ingNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:ems="10"
+            android:hint="Enter new ingredient name"
+            android:inputType="text"
+            android:textColor="@color/dark_brown"
+            android:textColorHint="@color/light_honey"  />
+
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/addIngToListBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="upload from gallery" />
+
+
+    <ImageView
+        android:id="@+id/recipeImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_weight="1"
+        android:src="@drawable/drink" />
 
-</FrameLayout>
+
+
+</LinearLayout>
