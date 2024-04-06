@@ -38,7 +38,11 @@
         android:id="@+id/uploadRecipeFragment"
         android:name="com.example.recipehive.fragments.UploadRecipeFragment"
         android:label="fragment_upload_recipe"
-        tools:layout="@layout/fragment_upload_recipe" />
+        tools:layout="@layout/fragment_upload_recipe" >
+        <action
+            android:id="@+id/action_uploadRecipeFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addIngredientFragment"
         android:name="com.example.recipehive.fragments.AddIngredientFragment"
