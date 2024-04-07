@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FavoritesFragment">
+    android:orientation="vertical"
+    tools:context=".fragments.UploadRecipeFragment"
+    android:padding="15dp"
+    android:background="@color/light_yellow">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="Add New Recipe"
+        android:textColor="@color/dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.65"
+            android:gravity="right|center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="Recipe name: " />
+
+        <EditText
+            android:id="@+id/recipeNameFavEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:ems="10"
+            android:hint="Enter name for the recipe"
+            android:inputType="text"
+            android:textColor="@color/dark_brown"
+            android:textColorHint="@color/light_honey" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="Recipe Type: " />
+
+        <Spinner
+            android:id="@+id/recipeTypeFavSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/favLinkTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="right|center_vertical"
+            android:text="Link to recipe: "
+            android:textColor="@color/dark_brown"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/urlEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:ems="10"
+            android:hint="Enter URL"
+            android:inputType="text"
+            android:textColor="@color/dark_brown"
+            android:textColorHint="@color/light_honey"  />
+
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/addFavToListBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="Add To Favorites" />
+
+
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/drink" />
+
+
+
+</LinearLayout>
