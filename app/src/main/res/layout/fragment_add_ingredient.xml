@@ -58,7 +58,7 @@
         android:background="@drawable/menu_btn_shape"
         android:textColor="@color/brown"
         android:textSize="16sp"
-        android:text="upload from gallery" />
+        android:text="Add Ingredient" />
 
 
     <ImageView

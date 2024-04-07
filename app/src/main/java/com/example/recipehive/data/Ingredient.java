@@ -10,4 +10,8 @@ public class Ingredient {
     public String getName(){
         return name;
     }
+
+    public Boolean isEqual(Ingredient ingredient){
+        return name.equalsIgnoreCase(ingredient.getName());
+    }
 }

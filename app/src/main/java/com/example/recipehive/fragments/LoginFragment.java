@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginFragment extends Fragment {
-
+    private static final String TAG = "LoginFragment";
     private Dialog registrationDialog;
 
     // Initialize Firebase Auth
@@ -82,7 +83,6 @@ public class LoginFragment extends Fragment {
                                     // Sign in success, update UI with the signed-in user's information
                                     //FirebaseUser user = mAuth.getCurrentUser();
                                     Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment);
-                                    //TODO: add a navigation to main menu fragment
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     errorMsg.setVisibility(View.VISIBLE);
@@ -124,10 +124,12 @@ public class LoginFragment extends Fragment {
                                                 //TODO: add checkif the email is already in use
                                                 FirebaseUser user = mAuth.getCurrentUser();
                                                 if (user != null) {
-                                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                                    DatabaseReference usernameRef = database.getReference(getString(R.string.username));
-                                                    usernameRef.setValue(username);
+                                                    String userId = user.getUid();
+                                                    //FirebaseDatabase database = ;
+                                                    DatabaseReference usernameRef = FirebaseDatabase.getInstance().getReference();
+                                                    usernameRef.child("users").child(userId).child("username").setValue(username);
                                                 registrationDialog.dismiss();
+                                                Log.d(TAG,"Login succeed. Moving to Main Menu.");
                                                 Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment);
 
                                             } else {

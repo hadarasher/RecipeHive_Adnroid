@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.recipehive.R;
 import com.example.recipehive.activities.MainActivity;
+import com.example.recipehive.data.Ingredient;
+import com.example.recipehive.services.DataService;
 import com.google.android.gms.common.util.JsonUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,13 +26,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainMenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MainMenuFragment extends Fragment {
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
+
+public class MainMenuFragment extends Fragment {
+    private static final String TAG = "MainMenuFragment";
     private FirebaseAuth mAuth= MainActivity.getFirebaseAuth();
     private String username;
 
@@ -48,9 +50,10 @@ public class MainMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        System.out.println("Login succeed. Moving to Main Menu.");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
+
+        getIngredientList();
 
         TextView helloUserText=view.findViewById(R.id.helloTtextView);
         Button uploadBtn=view.findViewById(R.id.uploadRecipeBtn);
@@ -66,7 +69,8 @@ public class MainMenuFragment extends Fragment {
         }else{
             System.out.println("User authenticated. getting username.");
         }
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.username));
+        String userId = user.getUid();
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child(getString(R.string.username));
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,5 +119,42 @@ public class MainMenuFragment extends Fragment {
 
 
         return view;
+    }
+
+    public void getIngredientList(){
+        Log.d(TAG,"Getting ingredient list");
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        // Getting ingredients from the API, then get the users' added ingredients from the storage.
+        try {
+            MainActivity.arrIng = DataService.getArrIngredients();
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (currentUser!=null) {
+            DatabaseReference userIngredientsRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUser.getUid()).child("ingredients");
+            userIngredientsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        // Get ingredient data and add to arrIng
+                        Ingredient ingredient = new Ingredient(snapshot.child("name").getValue(String.class));
+                        MainActivity.arrIng.add(ingredient);
+                    }
+
+                    // Print the ingredients added to arrIng
+                    Log.d(TAG, "Ingredients in list: " + MainActivity.arrIng.size());
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e("MainActivity", "Failed to read ingredients from database", databaseError.toException());
+                }
+            });
+        }
     }
 }
