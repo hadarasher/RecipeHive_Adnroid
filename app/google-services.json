@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "652011755423",
+    "project_id": "recipehive-e84de",
+    "storage_bucket": "recipehive-e84de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652011755423:android:e1cc4334548fcaa705cfaa",
+        "android_client_info": {
+          "package_name": "com.example.recipehive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLeZG6NVoNlN6eLLUKOpSzqvHfJmhxwMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

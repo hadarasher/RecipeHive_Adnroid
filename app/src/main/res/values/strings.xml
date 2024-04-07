@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RecipeHive</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upload_Recipe">Upload Recipe Image</string>
+    <string name="add_recipe">Add Recipe</string>
+    <string name="add_ingredients">Add Ingredients</string>
+    <string name="save_favorites">Save Favorites</string>
+    <string name="username">username</string>
+</resources>

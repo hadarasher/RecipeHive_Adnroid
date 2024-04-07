@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_honey2"
+    tools:context=".activities.MainActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="RecipeHive"
+        android:textAlignment="center"
+        android:textColor="@color/brown"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="80sp"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:background="@drawable/rounded_corners"
+        android:minHeight="48dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/light_honey"
+        android:inputType="textEmailAddress"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/rounded_corners"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/light_honey"/>
+
+    <TextView
+        android:id="@+id/errorMsg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.1"
+        android:text="Authentication failed. Please try again."
+        android:textColor="#FF0000"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:gravity="center|top"/>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="50dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/brown"
+        android:text="Login"
+        android:textColor="@color/light_yellow"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/brown"
+        android:text="Register"
+        android:textColor="@color/light_yellow"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp" />
+
+</LinearLayout>

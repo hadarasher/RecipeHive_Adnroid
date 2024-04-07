@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/addRecipeFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.recipehive.fragments.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_uploadRecipeFragment"
+            app:destination="@id/uploadRecipeFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addIngredientFragment"
+            app:destination="@id/addIngredientFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addRecipeFragment"
+            app:destination="@id/addRecipeFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.recipehive.fragments.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadRecipeFragment"
+        android:name="com.example.recipehive.fragments.UploadRecipeFragment"
+        android:label="fragment_upload_recipe"
+        tools:layout="@layout/fragment_upload_recipe" >
+        <action
+            android:id="@+id/action_uploadRecipeFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addIngredientFragment"
+        android:name="com.example.recipehive.fragments.AddIngredientFragment"
+        android:label="fragment_add_ingredient"
+        tools:layout="@layout/fragment_add_ingredient" >
+        <action
+            android:id="@+id/action_addIngredientFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRecipeFragment"
+        android:name="com.example.recipehive.fragments.AddRecipeFragment"
+        android:label="fragment_add_recipe"
+        tools:layout="@layout/fragment_add_recipe" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.recipehive.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="com.example.recipehive.fragments.RecipeListFragment"
+        android:label="fragment_recipe_list"
+        tools:layout="@layout/fragment_recipe_list" />
+</navigation>
