@@ -122,8 +122,7 @@ public class UploadRecipeFragment extends Fragment {
                     Toast.makeText(getContext(), "Recipe name must be added first...", Toast.LENGTH_SHORT).show();
                 } else if (imageUri==null) {
                     Toast.makeText(getContext(), "Recipe image not added...", Toast.LENGTH_SHORT).show();
-                }
-                {
+                }else {
                     uploadImageToFirebase();
                 }
             }

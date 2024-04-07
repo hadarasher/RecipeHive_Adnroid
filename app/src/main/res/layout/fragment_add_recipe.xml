@@ -1,14 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddRecipeFragment">
+    android:orientation="vertical"
+    tools:context=".fragments.UploadRecipeFragment"
+    android:padding="15dp"
+    android:background="@color/light_yellow">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/AddRecipeByIngTitleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="Add Recipe"
+        android:textColor="@color/dark_brown"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/recipetNameText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.65"
+            android:gravity="right|center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="Recipe name: " />
+
+        <EditText
+            android:id="@+id/recipeNameAddEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:ems="10"
+            android:hint="Enter name for the recipe"
+            android:inputType="text"
+            android:textColor="@color/dark_brown"
+            android:textColorHint="@color/light_honey" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/recipeTypeText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="Recipe Type: " />
+
+        <Spinner
+            android:id="@+id/recipeTypeAddSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <android.widget.Button
+            android:id="@+id/addIngredBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.8"
+            android:background="@drawable/menu_btn_shape"
+            android:layout_gravity="bottom"
+            android:text="+"
+            android:textColor="@color/brown"
+            android:textSize="26sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <android.widget.Button
+            android:id="@+id/addStepBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.8"
+            android:background="@drawable/menu_btn_shape"
+            android:layout_gravity="bottom"
+            android:text="+"
+            android:textColor="@color/brown"
+            android:textSize="26sp" />
+    </LinearLayout>
+
+
+
+    <android.widget.Button
+        android:id="@+id/saveRecipeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/menu_btn_shape"
+        android:textColor="@color/brown"
+        android:textSize="16sp"
+        android:text="Save Recipe" />
+
+</LinearLayout>
