@@ -79,7 +79,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ingredientsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.2">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -107,7 +107,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stepsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.2">
 
         </androidx.recyclerview.widget.RecyclerView>

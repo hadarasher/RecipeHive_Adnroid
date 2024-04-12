@@ -1,30 +1,20 @@
 package com.example.recipehive.data;
 
-public class UserRecipe {
-    private String recipeName;
-    private String recipeType;
+public class UserRecipe extends Recipe{
     private NewRecipeData recipe;
 
+    public UserRecipe(){
+        super();
+        this.recipe=new NewRecipeData();
+    }
+    public UserRecipe(UserRecipe userRecipe){
+        super(userRecipe.getRecipeName(),userRecipe.getRecipeType());
+        this.recipe=userRecipe.recipe;
+    }
     public UserRecipe(String recipeName, String recipeType, NewRecipeData recipe) {
-        this.recipeName = recipeName;
-        this.recipeType = recipeType;
+        super(recipeName,recipeType);
+
         this.recipe = recipe;
-    }
-
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
-
-    public String getRecipeType() {
-        return recipeType;
-    }
-
-    public void setRecipeType(String recipeType) {
-        this.recipeType = recipeType;
     }
 
     public NewRecipeData getRecipe() {

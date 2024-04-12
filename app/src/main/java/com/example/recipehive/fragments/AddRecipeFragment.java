@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,17 +49,14 @@ public class AddRecipeFragment extends Fragment implements SelectListenerIng, Se
     private String recipeTypeAddSpinnerString;
     private NewRecipeData recipe;
     private RecyclerView ingredientsRecyclerView;
-    private ArrayList<IngDataModel> ingDataSet;
     private CustomIngAdapter ingAdapter;
     private LinearLayoutManager inglayoutManager;
     private RecyclerView stepsRecyclerView;
-    private ArrayList<String> stepsDataSet;
     private CustomStepAdapter stepAdapter;
     private LinearLayoutManager steplayoutManager;
     private Dialog dialogAddIng;
     private Dialog dialogAddStep;
     private Dialog dialogDeleteItem;
-    private ImageView buttonClose;
 
 
     public static AddRecipeFragment newInstance() {
@@ -148,6 +146,7 @@ public class AddRecipeFragment extends Fragment implements SelectListenerIng, Se
                     Toast.makeText(getContext(), "Recipe name must be added first...", Toast.LENGTH_SHORT).show();
                 }else{
                     UploadRecipeToFirebase();
+                    Navigation.findNavController(view).navigate(R.id.action_addRecipeFragment_to_mainMenuFragment);
                 }
             }
         });
@@ -227,7 +226,7 @@ public class AddRecipeFragment extends Fragment implements SelectListenerIng, Se
         // Set autocomplete text
         //IngredientAutoCompleteAdapter adapter = new IngredientAutoCompleteAdapter(getContext(), MainActivity.arrIng);
         ArrayAdapter<Ingredient> arrayIngAdapter = new ArrayAdapter<>(getActivity(),R.drawable.spinner_item,MainActivity.arrIng);
-        enterIngoComplete.setThreshold(5);
+        enterIngoComplete.setThreshold(3);
         enterIngoComplete.setAdapter(arrayIngAdapter);
         Log.d(TAG, "openAddIngDialog: got autocomplete ingredient name adapter");
         addIngDialogBtn.setOnClickListener(new View.OnClickListener() {
@@ -288,7 +287,7 @@ public class AddRecipeFragment extends Fragment implements SelectListenerIng, Se
         return false;
     }
 
-    private void UploadRecipeToFirebase(){ //TODO: add name and type!
+    private void UploadRecipeToFirebase(){
         // Showing progressDialog while uploading
         ProgressDialog progressDialog= new ProgressDialog(getContext());
         progressDialog.setTitle("Uploading...");

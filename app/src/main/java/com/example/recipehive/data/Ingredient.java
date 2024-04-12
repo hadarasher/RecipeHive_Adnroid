@@ -14,4 +14,7 @@ public class Ingredient {
     public Boolean isEqual(Ingredient ingredient){
         return name.equalsIgnoreCase(ingredient.getName());
     }
+    public String toString(){
+        return name;
+    }
 }

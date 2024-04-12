@@ -8,6 +8,14 @@ public class IngDataModel {
         this.name = name;
         this.amount = amount;
     }
+    public IngDataModel(IngDataModel ingDataModel){
+        this.name=ingDataModel.getName();
+        this.amount=ingDataModel.getAmount();
+    }
+    public IngDataModel(){
+        this.name="";
+        this.amount="";
+    }
 
     public String getName() {
         return name;

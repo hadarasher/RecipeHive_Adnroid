@@ -2,31 +2,20 @@ package com.example.recipehive.data;
 
 import java.net.URL;
 
-public class URLRecipe {
-    private String recipeName;
-    private String recipeType;
+public class URLRecipe extends Recipe{
     private String  recipeURL;
 
+    public URLRecipe(){
+        super();
+        recipeURL="";
+    }
+    public URLRecipe(URLRecipe urlRecipe){
+        super(urlRecipe.getRecipeName(), urlRecipe.getRecipeType());
+        this.recipeURL=urlRecipe.recipeURL;
+    }
     public URLRecipe(String recipeName, String recipeType, String recipeURL) {
-        this.recipeName = recipeName;
-        this.recipeType = recipeType;
+        super(recipeName,recipeType);
         this.recipeURL = recipeURL;
-    }
-
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
-
-    public String getRecipeType() {
-        return recipeType;
-    }
-
-    public void setRecipeType(String recipeType) {
-        this.recipeType = recipeType;
     }
 
     public String getRecipeURL() {
