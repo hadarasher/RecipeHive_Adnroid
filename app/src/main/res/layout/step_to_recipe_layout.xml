@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/stepItemCardView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/light_yellow">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/numberView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="1." />
-
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Enter Step" />
         <ImageView
-            android:id="@+id/deleteStepBtn"
-            android:layout_width="35dp"
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/dot" />
+
+
+        <TextView
+            android:id="@+id/stepTextView"
+            android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_gravity="right|top"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_close_24" />
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="@color/dark_brown"
+            android:text="TextView" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

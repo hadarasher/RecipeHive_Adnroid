@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth=FirebaseAuth.getInstance();
-        MainActivity.arrIng = new ArrayList<>();
+        arrIng = new ArrayList<>();
 
         setContentView(R.layout.activity_main);
 
