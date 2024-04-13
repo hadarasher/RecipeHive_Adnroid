@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/stepItemCardView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="@color/light_yellow">
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/light_honey2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_gravity="bottom"
             android:gravity="center_vertical"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/dark_brown"
             android:text="TextView" />
 

@@ -55,7 +55,6 @@ public class LoginFragment extends Fragment {
         Log.d(TAG, "onCreateView: got to login fragment");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        //TODO: add try catch
         EditText emailEditText=view.findViewById(R.id.emailEditText);
         EditText passwordEdit=view.findViewById(R.id.passwordEditText);
         Button loginBtn=view.findViewById(R.id.buttonLogin);

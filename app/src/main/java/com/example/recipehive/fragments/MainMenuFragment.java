@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.recipehive.R;
 import com.example.recipehive.activities.MainActivity;
@@ -64,25 +65,25 @@ public class MainMenuFragment extends Fragment {
 
         //get user's name to show
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user==null){//TODO: add error handling
+        if(user==null){
             Log.d(TAG, "onCreateView: user does not exists. checkout for the problem.");
-        }else{
+            Toast.makeText(getContext(), "No user found. Please login again.", Toast.LENGTH_SHORT).show();
+        }else {
             Log.d(TAG, "onCreateView: User authenticated. getting username.");
+            String userId = user.getUid();
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("username");
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    username = snapshot.getValue(String.class);
+                    helloUserText.setText("Hello, " + username);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
         }
-        String userId = user.getUid();
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child(getString(R.string.username));
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                username = snapshot.getValue(String.class);
-                helloUserText.setText("Hello, "+username);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
         //Handle every button click to move to the relevant fragment
