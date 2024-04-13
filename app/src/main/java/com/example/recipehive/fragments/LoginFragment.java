@@ -52,7 +52,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        System.out.println("got to login fragment!");
+        Log.d(TAG, "onCreateView: got to login fragment");
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         //TODO: add try catch

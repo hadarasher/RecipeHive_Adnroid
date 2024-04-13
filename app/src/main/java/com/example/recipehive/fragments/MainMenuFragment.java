@@ -65,9 +65,9 @@ public class MainMenuFragment extends Fragment {
         //get user's name to show
         FirebaseUser user = mAuth.getCurrentUser();
         if(user==null){//TODO: add error handling
-            System.out.println("user does not exists. checkout for the problem.");
+            Log.d(TAG, "onCreateView: user does not exists. checkout for the problem.");
         }else{
-            System.out.println("User authenticated. getting username.");
+            Log.d(TAG, "onCreateView: User authenticated. getting username.");
         }
         String userId = user.getUid();
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId).child(getString(R.string.username));

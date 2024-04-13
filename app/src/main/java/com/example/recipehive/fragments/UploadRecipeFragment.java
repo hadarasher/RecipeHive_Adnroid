@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ import java.util.UUID;
 
 
 public class UploadRecipeFragment extends Fragment {
+    private String TAG = "UploadRecipeFragment";
     private String recipeTypeSpinnerString;
     private String recipeName;
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -116,8 +118,8 @@ public class UploadRecipeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 recipeName=recipeNameEdit.getText().toString();
-                System.out.println("recipe name = "+recipeName);
-                System.out.println("image uri = "+ imageUri.toString());
+                Log.d(TAG, "onClick: recipe name = "+recipeName);
+                Log.d(TAG, "onClick: image uri = "+ imageUri.toString());
                 if(recipeName.isEmpty()) {
                     Toast.makeText(getContext(), "Recipe name must be added first...", Toast.LENGTH_SHORT).show();
                 } else if (imageUri==null) {
@@ -142,12 +144,12 @@ public class UploadRecipeFragment extends Fragment {
     private void requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            System.out.println("Permission is not granted, request it");
+            Log.d(TAG, "requestCameraPermission: Permission is not granted, request it");
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{android.Manifest.permission.CAMERA},
                     REQUEST_CAMERA_PERMISSION);
         } else {
-            System.out.println("Permission is already granted, proceed with capturing image");
+            Log.d(TAG, "requestCameraPermission: Permission is already granted, proceed with capturing image");
             dispatchTakePictureIntent();
         }
     }
@@ -156,19 +158,19 @@ public class UploadRecipeFragment extends Fragment {
         switch (requestCode) {
             case REQUEST_CAMERA_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    System.out.println("Camera permission granted, proceed with capturing image");
+                    Log.d(TAG, "onRequestPermissionsResult: Camera permission granted, proceed with capturing image");
                     dispatchTakePictureIntent();
                 } else {
-                    System.out.println("Camera permission denied");
+                    Log.d(TAG, "onRequestPermissionsResult: Camera permission denied");
                     Toast.makeText(getContext(), "Camera permission is required to capture images", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case REQUEST_EXTERNAL_STORAGE_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    System.out.println("External storage permission granted, proceed with opening the gallery");
+                    Log.d(TAG, "onRequestPermissionsResult: External storage permission granted, proceed with opening the gallery");
                     SelectImage();
                 } else {
-                    System.out.println("External storage permission denied");
+                    Log.d(TAG, "onRequestPermissionsResult: External storage permission denied");
                     Toast.makeText(getContext(), "Gallery access permission is required", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -195,16 +197,16 @@ public class UploadRecipeFragment extends Fragment {
     }
 
     private void requestExternalStoragePermission() {
-        if(getActivity()==null) System.out.println("Activity = null");
+        if(getActivity()==null) Log.d(TAG, "requestExternalStoragePermission: Activity = null");
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-            System.out.println("Permission is not granted, request it");
+            Log.d(TAG, "requestExternalStoragePermission: Permission is not granted, request it");
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_EXTERNAL_STORAGE_PERMISSION);
-            System.out.println("after gallery permission request");
+            Log.d(TAG, "requestExternalStoragePermission: after gallery permission request");
         } else {
-            System.out.println("Permission is already granted, proceed with opening the gallery");
+            Log.d(TAG, "requestExternalStoragePermission: Permission is already granted, proceed with opening the gallery");
             SelectImage();
         }
     }
